@@ -1,19 +1,33 @@
-name: Multi-Job Workflow
-
+name: Multi-Runner Workflow
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-
+ push:
+   branches:
+     - main
+ pull_request:
+   branches:
+     - main
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-  
-
+ build:
+   name: Build on Ubuntu
+   runs-on: ubuntu-latest
+   steps:
+     - name: Checkout Repository
+       uses: actions/checkout@v4
+     - name: Set up Node.js
+       uses: actions/setup-node@v4
+ test:
+   name: Test on Windows
+   runs-on: windows-latest
+   steps:
+     - name: Checkout Repository
+       uses: actions/checkout@v4
+     - name: Run Tests
+       run: echo "Running tests on Windows"
+ deploy:
+   name: Deploy on macOS
+   runs-on: macos-latest
+   steps:
+     - name: Checkout Repository
+       uses: actions/checkout@v4
+     - name: Deploy Application
+       run: echo "Deploying on macOS"
