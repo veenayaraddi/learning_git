@@ -1,0 +1,25 @@
+name: Complex Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened]
+  pull_request_review:
+    types: [submitted]
+  issues:
+    types: [opened]
+  fork:
+    types: [created]
+  schedule:
+    - cron: '0 0 * * *' # Runs daily at midnight
+  workflow_dispatch: # Manual trigger
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
