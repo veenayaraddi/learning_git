@@ -1,4 +1,4 @@
-name: Complex Workflow
+name: Myfirst Workflow
 
 on:
   push:
@@ -22,4 +22,4 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      run: echo "checkout the code..."
